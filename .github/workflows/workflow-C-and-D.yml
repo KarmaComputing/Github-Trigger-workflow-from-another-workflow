@@ -24,6 +24,7 @@ jobs:
   notify:
     needs: build
     runs-on: ubuntu-20.04
+    if: ${{ success() }}
     steps:
       - name: template D
         run: |
