@@ -6,7 +6,7 @@
 name: template B
 on: 
   workflow_run:
-    workflows: ["template-A"]
+    workflows: ["template A"]
     types: [completed]
 jobs:
   record_videos:
