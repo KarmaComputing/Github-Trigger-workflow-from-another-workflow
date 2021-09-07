@@ -24,7 +24,7 @@ jobs:
   notify:
     needs: build
     runs-on: ubuntu-20.04
-  steps:
-    - name: template D
-      run: |
-        echo "templace D"
+    steps:
+      - name: template D
+        run: |
+          echo "templace D"
