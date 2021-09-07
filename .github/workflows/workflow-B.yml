@@ -13,7 +13,6 @@ jobs:
     runs-on: ubuntu-20.04
     timeout-minutes: 60
     environment: testing
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Dump context
         env:
