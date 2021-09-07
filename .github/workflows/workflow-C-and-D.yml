@@ -1,0 +1,31 @@
+---
+# When a push is made to a branch, deploy an instance of the app using
+# that branch. 
+# The deployed url will be <branchname>.<domain>
+
+name: template C and D
+on: 
+  - pull_request
+  # (pull_request_target get fired on external contributer pull requests)
+  # - pull_request_target
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    timeout-minutes: 60
+    environment: testing
+    steps:
+      - name: Dump context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: |
+          echo $GITHUB_CONTEXT
+          echo "template C"
+
+  notify:
+    needs: build
+    runs-on: ubuntu-20.04
+    if: ${{ success() }}
+    steps:
+      - name: template D
+        run: |
+          echo "templace D"

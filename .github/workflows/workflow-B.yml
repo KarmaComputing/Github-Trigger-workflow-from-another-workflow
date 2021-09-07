@@ -1,0 +1,28 @@
+---
+# When a push is made to a branch, deploy an instance of the app using
+# that branch. 
+# The deployed url will be <branchname>.<domain>
+
+name: template B
+on: 
+  workflow_run:
+    workflows: ["template A"]
+    branches-ignore:
+    types: [completed]
+jobs:
+  record_videos:
+    runs-on: ubuntu-20.04
+    timeout-minutes: 60
+    environment: testing
+    steps:
+      - name: Dump context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: |
+          echo $GITHUB_CONTEXTi
+          echo "template B"
+          echo "yey! working" 
+
+
+
+
